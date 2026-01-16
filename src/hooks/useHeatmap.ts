@@ -1,4 +1,5 @@
-import { normalize, interpolateGreenToRed } from "../utils/heatmap";
+import { normalize } from "../utils/heatmap";
+import { interpolateGreenYellowRed } from "../utils/heatmap";
 
 export function useHeatmap(values: number[]) {
   const min = Math.min(...values);
@@ -6,7 +7,7 @@ export function useHeatmap(values: number[]) {
 
   function getColor(value: number): string {
     const ratio = normalize(value, min, max);
-    return interpolateGreenToRed(ratio);
+    return interpolateGreenYellowRed(ratio);
   }
 
   return { min, max, getColor };
